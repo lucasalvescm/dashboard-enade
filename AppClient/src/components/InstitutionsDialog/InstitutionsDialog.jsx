@@ -4,6 +4,8 @@ import NotificationSystem from "react-notification-system";
 import { style } from "variables/Variables.jsx";
 import Button from "components/CustomButton/CustomButton.jsx";
 
+import swal from 'sweetalert';
+
 class InstitutionsDialog extends Component {
 
   constructor(props, context) {
@@ -19,6 +21,7 @@ class InstitutionsDialog extends Component {
     this.editAverageCourse = this.editAverageCourse.bind(this);
     this.postInstitution = this.postInstitution.bind(this);
     this.getListCoursers = this.getListCoursers.bind(this);
+    this.validate = this.validate.bind(this);
 
     this.state = {
       courseSelected: '',
@@ -166,57 +169,78 @@ class InstitutionsDialog extends Component {
     this.setState({ coursers: updateCoursers })
   }
 
+  validate() {
+    var msg = ''
+    var error = false
+    if (this.state.nameInstitution === '') {
+      msg += '\n- Preencha o nome da instituição'
+      error = true
+    }
+    console.log(this.state.coursers)
+    if (this.state.coursers.length === 0) {
+      console.log('error')
+      msg += '\n- Insira no mínimo 1 curso'
+      error = true
+    }
+    return {
+      msg: msg,
+      error: error
+    }
+  }
 
   postInstitution() {
     var message = "Performance inserida com sucesso"
     var level = "success"
-
-    let newPerformance = {
-      name: this.state.nameInstitution,
-      generalNote: this.state.generalNote,
-      coursers: this.state.coursers
+    let validate = this.validate();
+    if (validate.error) {
+      swal("Oops", validate.msg, "error")
     }
-    const that = this;
-    fetch('http://localhost:8080/institutions/create', {
-      headers: { 'Content-Type': 'application/json' },
-      method: 'post',
-      body: JSON.stringify(newPerformance)
-    }).then(function (response) {
-      if (response.status !== 201) {
-        message = "Ocorreu algum erro"
-        level = "error"
-        that.state._notificationSystem.addNotification({
-          title: <span data-notify="icon" className="pe-7s-close" />,
-          message: (
-            <div>{message}</div>
-          ),
-          level: level,
-          position: "tr",
-          autoDismiss: 15
-        });
+    else {
+      let newPerformance = {
+        name: this.state.nameInstitution,
+        generalNote: this.state.generalNote,
+        coursers: this.state.coursers
       }
-      else {
-        that.state._notificationSystem.addNotification({
-          title: <span data-notify="icon" className="pe-7s-check" />,
-          message: (
-            <div>{message}</div>
-          ),
-          level: level,
-          position: "tr",
-          autoDismiss: 15
-        });
-        that.setState({
-          show: false,
-          courseSelected: '',
-          coursers: [],
-          nameInstitution: '',
-          generalNote: "0",
-        });
-        that.props.refreshListInstitutions();
-      }
-
-
-    });
+      const that = this;
+      fetch('http://localhost:8080/institutions/create', {
+        headers: { 'Content-Type': 'application/json' },
+        method: 'post',
+        body: JSON.stringify(newPerformance)
+      }).then(function (response) {
+        if (response.status !== 201) {
+          message = "Ocorreu algum erro"
+          level = "error"
+          that.state._notificationSystem.addNotification({
+            title: <span data-notify="icon" className="pe-7s-close" />,
+            message: (
+              <div>{message}</div>
+            ),
+            level: level,
+            position: "tr",
+            autoDismiss: 15
+          });
+        }
+        else {
+          that.state._notificationSystem.addNotification({
+            title: <span data-notify="icon" className="pe-7s-check" />,
+            message: (
+              <div>{message}</div>
+            ),
+            level: level,
+            position: "tr",
+            autoDismiss: 15
+          });
+          that.setState({
+            show: false,
+            courseSelected: '',
+            coursers: [],
+            nameInstitution: '',
+            generalNote: "0",
+          });
+          that.props.refreshListInstitutions();
+        }
+      });
+    }
 
   }
 

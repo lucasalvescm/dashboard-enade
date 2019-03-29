@@ -106,7 +106,7 @@ class Institutions extends Component {
                                 })}
                               </td>
                               <td>
-                                <Button bsStyle="danger" pullRight fill onClick={e => this.deleteInstitution(item._id)}>
+                                <Button bsStyle="danger" fill onClick={e => this.deleteInstitution(item._id)}>
                                   Excluir
                                 </Button>
                               </td>

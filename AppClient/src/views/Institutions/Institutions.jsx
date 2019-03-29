@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Row, Col, Table } from 'react-bootstrap';
+import { Grid, Row, Col, Table, ButtonGroup } from 'react-bootstrap';
 
 import Button from "components/CustomButton/CustomButton.jsx";
 
@@ -118,12 +118,14 @@ class Institutions extends Component {
                                 })}
                               </td>
                               <td>
-                                <Button bsStyle="danger" fill onClick={e => this.deleteInstitution(item._id)}>
-                                  Excluir
+                                <ButtonGroup>
+                                  <Button bsStyle="danger" fill onClick={e => this.deleteInstitution(item._id)}>
+                                    Excluir
                                 </Button>
-                                <Button bsStyle="primary" style={{ marginLeft: 1 + 'em' }} fill onClick={e => this.viewInstitution(item)}>
-                                  Detalhes
+                                  <Button bsStyle="primary" fill onClick={e => this.viewInstitution(item)}>
+                                    Detalhes
                                 </Button>
+                                </ButtonGroup>
                               </td>
                             </tr>
                           );

@@ -1,7 +1,14 @@
 import Institutions from 'views/Institutions/Institutions';
 import Coursers from 'views/Coursers/Coursers';
+import Dashboard from 'views/Dashboard/Dashboard';
 
 const dashboardRoutes = [
+  {
+    path: '/dashboard',
+    name: 'Dashboard',
+    icon: 'pe-7s-graph',
+    component: Dashboard
+  },
   {
     path: '/instituicoes',
     name: 'Instituições',

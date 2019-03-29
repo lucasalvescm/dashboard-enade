@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Button, Modal, Table } from 'react-bootstrap';
+import { Modal, Table } from 'react-bootstrap';
 import NotificationSystem from "react-notification-system";
 import { style } from "variables/Variables.jsx";
+import Button from "components/CustomButton/CustomButton.jsx";
 
 class InstitutionsDialog extends Component {
 
@@ -204,6 +205,14 @@ class InstitutionsDialog extends Component {
           position: "tr",
           autoDismiss: 15
         });
+        that.setState({
+          show: false,
+          courseSelected: '',
+          coursers: [],
+          nameInstitution: '',
+          generalNote: "0",
+        });
+        that.props.refreshListInstitutions();
       }
 
 
@@ -215,7 +224,8 @@ class InstitutionsDialog extends Component {
     const { items, coursers } = this.state;
     return (
       <div>
-        <Button variant="success" onClick={this.handleShow}>
+
+        <Button bsStyle="success" fill onClick={this.handleShow}>
           Cadastrar Instituição
         </Button>
 
@@ -277,11 +287,11 @@ class InstitutionsDialog extends Component {
 
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary" onClick={this.handleClose}>
-              Close
+            <Button bsStyle="primary" fill onClick={this.handleClose}>
+              Fechar
             </Button>
-            <Button variant="primary" onClick={this.postInstitution}>
-              Save Changes
+            <Button bsStyle="primary" fill onClick={this.postInstitution}>
+              Salvar
             </Button>
           </Modal.Footer>
         </Modal>

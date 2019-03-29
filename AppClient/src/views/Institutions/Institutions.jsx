@@ -1,15 +1,20 @@
 import React, { Component } from 'react';
 import { Grid, Row, Col, Table } from 'react-bootstrap';
 
+import Button from "components/CustomButton/CustomButton.jsx";
+
 import Card from 'components/Card/Card.jsx';
 import { thArray } from 'variables/Variables.jsx';
 import InstitutionsDialog from 'components/InstitutionsDialog/InstitutionsDialog.jsx';
+import swal from 'sweetalert';
+
 
 class Institutions extends Component {
   constructor(props, context) {
     super(props, context);
 
     this.getListInstitutions = this.getListInstitutions.bind(this);
+    this.deleteInstitution = this.deleteInstitution.bind(this);
 
     this.state = {
       items: [],
@@ -31,9 +36,6 @@ class Institutions extends Component {
             items: result
           });
         },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
         error => {
           this.setState({
             isLoaded: true,
@@ -41,6 +43,31 @@ class Institutions extends Component {
           });
         }
       );
+  }
+  deleteInstitution(id) {
+    swal({
+      title: "Confirma a exclusão?",
+      text: "Tem certeza que deseja remover a instituição?",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+      .then((willDelete) => {
+        if (willDelete) {
+          const that = this;
+          fetch('http://localhost:8080/institutions/' + id + '/delete', {
+            method: 'delete'
+          })
+            .then(function (response) {
+              swal("Instituição removida", {
+                icon: "success",
+              });
+              that.getListInstitutions()
+            })
+
+        }
+      });
+
   }
   render() {
     const { items } = this.state;
@@ -78,7 +105,11 @@ class Institutions extends Component {
                                   return course.name + ', ';
                                 })}
                               </td>
-                              <td>-</td>
+                              <td>
+                                <Button bsStyle="danger" pullRight fill onClick={e => this.deleteInstitution(item._id)}>
+                                  Excluir
+                                </Button>
+                              </td>
                             </tr>
                           );
                         })}

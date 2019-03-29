@@ -38,9 +38,9 @@ exports.institution_update = function (req, res, next) {
     );
 };
 
-// exports.institution_delete = function(req, res, next) {
-//     institution.findByIdAndDelete(req.params.id, function(err) {
-//         if (err) return next(err);
-//         res.status(200).send('Institution Deleted.');
-//     });
-// };
+exports.institution_delete = function (req, res, next) {
+    Institution.findByIdAndDelete(req.params.id, function (err) {
+        if (err) return next(err);
+        res.status(200).send('Institution Deleted.');
+    });
+};

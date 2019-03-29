@@ -21,7 +21,7 @@ const dashboardRoutes = [
     icon: 'pe-7s-bell',
     component: Notifications
   },
-  { redirect: true, path: '/', to: '/dashboard', name: 'Dashboard' }
+  { redirect: true, path: '/', to: '/instituicoes', name: 'Instituições' }
 ];
 
 export default dashboardRoutes;

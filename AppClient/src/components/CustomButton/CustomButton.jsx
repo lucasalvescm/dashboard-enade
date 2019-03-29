@@ -14,7 +14,6 @@ class CustomButton extends Component {
       "btn-block": block,
       "btn-round": round
     });
-
     return <Button className={btnClasses} {...rest} />;
   }
 }

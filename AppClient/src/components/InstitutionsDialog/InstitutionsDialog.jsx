@@ -176,10 +176,12 @@ class InstitutionsDialog extends Component {
       msg += '\n- Preencha o nome da instituição'
       error = true
     }
-    console.log(this.state.coursers)
     if (this.state.coursers.length === 0) {
-      console.log('error')
       msg += '\n- Insira no mínimo 1 curso'
+      error = true
+    }
+    if (this.state.generalNote === '') {
+      msg += '\n- Preencha a nota geral da instituição'
       error = true
     }
     return {

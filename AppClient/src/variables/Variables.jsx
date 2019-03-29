@@ -249,8 +249,8 @@ var style = {
 // // // For tables
 // //
 //
-const thArray = ['Instituição', 'Nota Geral', 'Cursos', 'Ações'];
-const tdArray = [];
+const thInstitutions = ['Instituição', 'Nota Geral', 'Cursos', 'Ações'];
+const thCoursers = ['Nome', 'Ações'];
 
 //
 // //
@@ -516,7 +516,7 @@ var responsiveSales = [
     'screen and (max-width: 640px)',
     {
       axisX: {
-        labelInterpolationFnc: function(value) {
+        labelInterpolationFnc: function (value) {
           return value[0];
         }
       }
@@ -562,7 +562,7 @@ var responsiveBar = [
     {
       seriesBarDistance: 5,
       axisX: {
-        labelInterpolationFnc: function(value) {
+        labelInterpolationFnc: function (value) {
           return value[0];
         }
       }
@@ -576,8 +576,8 @@ var legendBar = {
 
 module.exports = {
   style, // For notifications (App container and Notifications view)
-  thArray,
-  tdArray, // For tables (TableList view)
+  thCoursers,
+  thInstitutions, // For tables (TableList view)
   iconsArray, // For icons (Icons view)
   dataPie,
   legendPie,

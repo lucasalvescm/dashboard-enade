@@ -18,7 +18,7 @@ exports.institution_list = function (req, res, next) {
     Institution.find({}, function (err, institution) {
         if (err) return next(err);
         res.status(200).send(institution);
-    }).sort({ name: 1 });
+    }).sort({ generalNote: -1 });
 };
 
 // exports.institution_details = function(req, res, next) {

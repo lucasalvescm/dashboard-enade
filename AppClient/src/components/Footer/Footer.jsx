@@ -11,15 +11,6 @@ class Footer extends Component {
               <li>
                 <a href="#pablo">Home</a>
               </li>
-              <li>
-                <a href="#pablo">Company</a>
-              </li>
-              <li>
-                <a href="#pablo">Portfolio</a>
-              </li>
-              <li>
-                <a href="#pablo">Blog</a>
-              </li>
             </ul>
           </nav>
           <p className="copyright pull-right">

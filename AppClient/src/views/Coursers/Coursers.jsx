@@ -4,18 +4,17 @@ import { Grid, Row, Col, Table } from 'react-bootstrap';
 import Button from "components/CustomButton/CustomButton.jsx";
 
 import Card from 'components/Card/Card.jsx';
-import { thInstitutions } from 'variables/Variables.jsx';
-import InstitutionsDialog from 'components/InstitutionsDialog/InstitutionsDialog.jsx';
+import { thCoursers } from 'variables/Variables.jsx';
+import CoursersDialog from 'components/CoursersDialog/CoursersDialog.jsx';
 import swal from 'sweetalert';
 
 
-class Institutions extends Component {
+class Coursers extends Component {
   constructor(props, context) {
     super(props, context);
 
-    this.getListInstitutions = this.getListInstitutions.bind(this);
-    this.deleteInstitution = this.deleteInstitution.bind(this);
-    this.viewInstitution = this.viewInstitution.bind(this);
+    this.getListCoursers = this.getListCoursers.bind(this);
+    this.deleteCoursers = this.deleteCoursers.bind(this);
 
     this.state = {
       items: [],
@@ -25,10 +24,10 @@ class Institutions extends Component {
   }
 
   componentDidMount() {
-    this.getListInstitutions();
+    this.getListCoursers();
   }
-  getListInstitutions() {
-    fetch('http://localhost:8080/institutions')
+  getListCoursers() {
+    fetch('http://localhost:8080/coursers')
       .then(res => res.json())
       .then(
         result => {
@@ -45,10 +44,10 @@ class Institutions extends Component {
         }
       );
   }
-  deleteInstitution(id) {
+  deleteCoursers(id) {
     swal({
       title: "Confirma a exclusão?",
-      text: "Tem certeza que deseja remover a instituição?",
+      text: "Tem certeza que deseja remover o curso?",
       icon: "warning",
       buttons: true,
       dangerMode: true,
@@ -56,30 +55,19 @@ class Institutions extends Component {
       .then((willDelete) => {
         if (willDelete) {
           const that = this;
-          fetch('http://localhost:8080/institutions/' + id + '/delete', {
+          fetch('http://localhost:8080/coursers/' + id + '/delete', {
             method: 'delete'
           })
             .then(function (response) {
-              swal("Instituição removida", {
+              swal("Curso removido", {
                 icon: "success",
               });
-              that.getListInstitutions()
+              that.getListCoursers()
             })
 
         }
       });
 
-  }
-
-  viewInstitution(json) {
-    let body = "Nota Geral: " + json.generalNote;
-    body += "\nCursos: "
-    for (var idx in json.coursers) {
-      body += "\n - " + json.coursers[idx].name +
-        ":\n* Nota Geral: " + json.coursers[idx].note +
-        "\n* Média dos Alunos: " + json.coursers[idx].averageStudentNote + '\n'
-    }
-    swal(json.name, body);
   }
   render() {
     const { items } = this.state;
@@ -89,19 +77,19 @@ class Institutions extends Component {
           <Row>
             <Col md={12}>
               <Card
-                title="Cadastro de Performance de Instituições"
-                category="Cadastro e exclusão de performance de instituição"
+                title="Cadastro de Cursos"
+                category="Cadastro e exclusão de cursos"
                 ctTableFullWidth
                 ctTableResponsive
                 content={
                   <form>
                     <Col md={12}>
-                      <InstitutionsDialog refreshListInstitutions={this.getListInstitutions} />
+                      <CoursersDialog refreshListInstitutions={this.getListCoursers} />
                     </Col>
                     <Table striped hover>
                       <thead>
                         <tr>
-                          {thInstitutions.map((prop, key) => {
+                          {thCoursers.map((prop, key) => {
                             return <th key={key}>{prop}</th>;
                           })}
                         </tr>
@@ -111,18 +99,9 @@ class Institutions extends Component {
                           return (
                             <tr key={item._id}>
                               <td>{item.name}</td>
-                              <td>{item.generalNote}</td>
                               <td>
-                                {item.coursers.map((course, key) => {
-                                  return course.name + ', ';
-                                })}
-                              </td>
-                              <td>
-                                <Button bsStyle="danger" fill onClick={e => this.deleteInstitution(item._id)}>
+                                <Button bsStyle="danger" fill onClick={e => this.deleteCoursers(item._id)}>
                                   Excluir
-                                </Button>
-                                <Button bsStyle="primary" style={{ marginLeft: 1 + 'em' }} fill onClick={e => this.viewInstitution(item)}>
-                                  Detalhes
                                 </Button>
                               </td>
                             </tr>
@@ -141,4 +120,4 @@ class Institutions extends Component {
   }
 }
 
-export default Institutions;
+export default Coursers;

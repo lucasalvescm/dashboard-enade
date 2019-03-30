@@ -61,7 +61,9 @@ class CardInstitutions extends Component {
           institutionsSearched.map((k, v) => {
             if (Object.keys(k).indexOf(institution) >= 0) {
               keyExists = true
+
             }
+            return true
           })
           if (keyExists === false) {
             institutionsSearched.push({

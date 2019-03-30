@@ -575,9 +575,9 @@ var legendBar = {
 };
 
 var api_urls = {
-  coursers: "http://localhost:8080/coursers",
-  institutions: "http://localhost:8080/institutions",
-  analytics: "http://localhost:8080/analytics"
+  coursers: "http://localhost:3000/coursers",
+  institutions: "http://localhost:3000/institutions",
+  analytics: "http://localhost:3000/analytics"
 }
 
 module.exports = {

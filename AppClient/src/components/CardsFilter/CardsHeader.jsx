@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import { Table } from 'react-bootstrap';
-import { Card } from "components/Card/Card.jsx";
 import { api_urls } from "variables/Variables.jsx"
-import { Grid, Row, Col } from "react-bootstrap";
+import { Col } from "react-bootstrap";
 import { StatsCard } from "components/StatsCard/StatsCard.jsx";
 
 class CardsHeaders extends Component {

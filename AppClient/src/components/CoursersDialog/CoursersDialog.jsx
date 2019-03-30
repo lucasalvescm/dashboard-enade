@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Modal, Table } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 import NotificationSystem from "react-notification-system";
-import { style } from "variables/Variables.jsx";
+import { style, api_urls } from "variables/Variables.jsx";
 import Button from "components/CustomButton/CustomButton.jsx";
 
 import swal from 'sweetalert';
@@ -79,7 +79,7 @@ class CoursersDialog extends Component {
         name: this.state.name,
       }
       const that = this;
-      fetch('http://localhost:8080/coursers/create', {
+      fetch(api_urls.coursers + '/create', {
         headers: { 'Content-Type': 'application/json' },
         method: 'post',
         body: JSON.stringify(newCourse)

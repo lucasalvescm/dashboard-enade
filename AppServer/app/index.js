@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const dbConfig = require('../config/db').default;
 const course = require('./routes/course');
 const institution = require('./routes/institution');
+const analytics = require('./routes/analytics');
 var cors = require('cors');
 const app = express();
 
@@ -20,6 +21,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/coursers', course);
 app.use('/institutions', institution);
+app.use('/analytics', analytics);
 const PORT = process.env.PORT || 8080;
 
 app.listen(PORT, () => {

@@ -4,8 +4,10 @@ import { Grid, Row, Col, Table } from 'react-bootstrap';
 import Button from "components/CustomButton/CustomButton.jsx";
 
 import Card from 'components/Card/Card.jsx';
-import { thCoursers } from 'variables/Variables.jsx';
+import { thCoursers, api_urls } from 'variables/Variables.jsx';
 import CoursersDialog from 'components/CoursersDialog/CoursersDialog.jsx';
+
+
 import swal from 'sweetalert';
 
 
@@ -27,7 +29,7 @@ class Coursers extends Component {
     this.getListCoursers();
   }
   getListCoursers() {
-    fetch('http://localhost:8080/coursers')
+    fetch(api_urls.coursers)
       .then(res => res.json())
       .then(
         result => {
@@ -55,7 +57,7 @@ class Coursers extends Component {
       .then((willDelete) => {
         if (willDelete) {
           const that = this;
-          fetch('http://localhost:8080/coursers/' + id + '/delete', {
+          fetch(api_urls.coursers + '/' + id + '/delete', {
             method: 'delete'
           })
             .then(function (response) {

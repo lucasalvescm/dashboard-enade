@@ -574,7 +574,14 @@ var legendBar = {
   types: ['info', 'danger']
 };
 
+var api_urls = {
+  coursers: "http://localhost:8080/coursers",
+  institutions: "http://localhost:8080/institutions",
+  analytics: "http://localhost:8080/analytics"
+}
+
 module.exports = {
+  api_urls,
   style, // For notifications (App container and Notifications view)
   thCoursers,
   thInstitutions, // For tables (TableList view)

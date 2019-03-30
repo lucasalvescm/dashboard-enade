@@ -4,7 +4,7 @@ import { Grid, Row, Col, Table, ButtonGroup } from 'react-bootstrap';
 import Button from "components/CustomButton/CustomButton.jsx";
 
 import Card from 'components/Card/Card.jsx';
-import { thInstitutions } from 'variables/Variables.jsx';
+import { thInstitutions, api_urls } from 'variables/Variables.jsx';
 import InstitutionsDialog from 'components/InstitutionsDialog/InstitutionsDialog.jsx';
 import swal from 'sweetalert';
 
@@ -28,7 +28,7 @@ class Institutions extends Component {
     this.getListInstitutions();
   }
   getListInstitutions() {
-    fetch('http://localhost:8080/institutions')
+    fetch(api_urls.institutions)
       .then(res => res.json())
       .then(
         result => {
@@ -56,7 +56,7 @@ class Institutions extends Component {
       .then((willDelete) => {
         if (willDelete) {
           const that = this;
-          fetch('http://localhost:8080/institutions/' + id + '/delete', {
+          fetch(api_urls.institutions + '/' + id + '/delete', {
             method: 'delete'
           })
             .then(function (response) {

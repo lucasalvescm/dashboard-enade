@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Modal, Table } from 'react-bootstrap';
 import NotificationSystem from "react-notification-system";
-import { style } from "variables/Variables.jsx";
+import { style, api_urls } from "variables/Variables.jsx";
 import Button from "components/CustomButton/CustomButton.jsx";
 
 import swal from 'sweetalert';
@@ -44,7 +44,7 @@ class InstitutionsDialog extends Component {
   }
 
   getListCoursers() {
-    fetch('http://localhost:8080/coursers')
+    fetch(api_urls.coursers)
       .then(res => res.json())
       .then(
         result => {
@@ -204,7 +204,7 @@ class InstitutionsDialog extends Component {
         coursers: this.state.coursers
       }
       const that = this;
-      fetch('http://localhost:8080/institutions/create', {
+      fetch(api_urls.institutions + '/create', {
         headers: { 'Content-Type': 'application/json' },
         method: 'post',
         body: JSON.stringify(newPerformance)

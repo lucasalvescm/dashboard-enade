@@ -3,12 +3,16 @@ import { Table } from 'react-bootstrap';
 import { Card } from "components/Card/Card.jsx";
 import { api_urls } from "variables/Variables.jsx"
 
+import Button from "components/CustomButton/CustomButton.jsx";
+import swal from 'sweetalert';
+
 class CardInstitutions extends Component {
   constructor(props, context) {
     super(props, context);
 
     this.getListInstitutions = this.getListInstitutions.bind(this);
     this.changeName = this.changeName.bind(this);
+    this.viewInstitutionCoursers = this.viewInstitutionCoursers.bind(this);
 
     this.state = {
       institutions: [],
@@ -29,7 +33,10 @@ class CardInstitutions extends Component {
         result => {
           let institutions = {}
           for (var idx in result) {
-            institutions[result[idx].name] = result[idx].generalNote
+            institutions[result[idx].name] = {
+              generalNote: result[idx].generalNote,
+              coursers: result[idx].coursers
+            }
           }
           this.setState({
             institutions: institutions
@@ -49,7 +56,7 @@ class CardInstitutions extends Component {
     if (name.length >= 2) {
       let institutionsSearched = this.state.institutionsSearched
       for (var institution in this.state.institutions) {
-        if (institution.includes(name)) {
+        if (institution.toUpperCase().includes(name.toUpperCase())) {
           let keyExists = false
           institutionsSearched.map((k, v) => {
             if (Object.keys(k).indexOf(institution) >= 0) {
@@ -70,6 +77,18 @@ class CardInstitutions extends Component {
     else {
       this.setState({ institutionsSearched: [] })
     }
+  }
+
+  viewInstitutionCoursers(nameInstitution, coursers) {
+    console.log(coursers)
+    console.log(coursers)
+    let body = "Cursos: "
+    for (var idx in coursers) {
+      body += "\n - " + coursers[idx].name +
+        ":\n* Nota Geral: " + coursers[idx].note +
+        "\n* Média dos Alunos: " + coursers[idx].averageStudentNote + '\n'
+    }
+    swal(nameInstitution, body);
   }
 
   render() {
@@ -94,16 +113,21 @@ class CardInstitutions extends Component {
                 <tr>
                   <th>Nome</th>
                   <th>Nota Geral</th>
+                  <th>Cursos</th>
                 </tr>
               </thead>
               <tbody>
                 {institutionsSearched.map((value, key) => {
                   let k = Object.keys(value)[0]
-                  console.log(institutionsSearched.length)
                   return (
                     <tr key={key}>
                       <td>{k}</td>
-                      <td>{value[k]}</td>
+                      <td>{value[k].generalNote}</td>
+                      <td>
+                        <Button bsStyle="primary" fill onClick={e => this.viewInstitutionCoursers(k, value[k].coursers)}>
+                          Detalhes
+                        </Button>
+                      </td>
                     </tr>
                   );
                 })}

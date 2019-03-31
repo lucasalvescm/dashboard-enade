@@ -22,7 +22,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/coursers', course);
 app.use('/institutions', institution);
 app.use('/analytics', analytics);
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
     console.log('Server is up and running on port number ' + PORT);

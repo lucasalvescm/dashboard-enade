@@ -1,0 +1,30 @@
+{
+  "name": "appserver",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node --max-old-space-size=4096 app/index.js",
+    "serve": "node --max-old-space-size=4096 app/index.js",
+    "test": "mocha --timeout 10000"
+  },
+  "author": "Lucas Alves",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "dotenv": "^6.2.0",
+    "eslint": "^5.15.0",
+    "express": "^4.16.4",
+    "mongodb": "^3.1.13",
+    "mongoose": "^5.4.16",
+    "nodemon": "^1.18.10"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.1",
+    "mocha": "^6.0.2",
+    "supertest": "^3.4.2",
+    "tape": "^4.10.1"
+  }
+}

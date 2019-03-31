@@ -1,0 +1,27 @@
+version: '3'
+services:
+  api:
+    container_name: api
+    hostname: api
+    build: AppServer
+    volumes:
+      - ./AppServer:/home/node/app
+      - /home/node/app/node_modules
+    ports:
+      - '3000:3000'
+    environment:
+      - PORT=3000
+      - NODE_ENV=production
+
+  front:
+    container_name: front
+    hostname: front
+    build: AppClient
+    volumes:
+      - ./AppClient:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - '8000:8000'
+    environment:
+      - PORT=8000
+      - NODE_ENV=production

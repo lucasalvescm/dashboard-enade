@@ -7,7 +7,7 @@ services:
       context: .
       dockerfile: Dockerfile.web
     volumes:
-      - ./AppServer:/home/node/app
+      - ./AppClient:/home/node/app
       - /home/node/app/node_modules
     ports:
       - '8080:8080'
@@ -20,9 +20,9 @@ services:
     hostname: server
     build: 
       context: .
-      dockerfile: Dockerfile.web
+      dockerfile: Dockerfile.server
     volumes:
-      - ./AppClient:/usr/src/app
+      - ./AppServer:/usr/src/app
       - /usr/src/app/node_modules
     ports:
       - '4000:4000'

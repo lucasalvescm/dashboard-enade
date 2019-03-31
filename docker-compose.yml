@@ -21,7 +21,7 @@ services:
       - ./AppClient:/usr/src/app
       - /usr/src/app/node_modules
     ports:
-      - '4000:4000'
+      - '8000:8000'
     environment:
-      - PORT=4000
+      - PORT=8000
       - NODE_ENV=production

@@ -47,10 +47,10 @@ class Sidebar extends Component {
             </div>
           </a>
           <a
-            href="https://www.linkedin.com/in/lucas-alves-s/"
+            href=""
             className="simple-text logo-normal"
           >
-            Lucas Alves
+            Dashboard Enade
           </a>
         </div>
         <div className="sidebar-wrapper">

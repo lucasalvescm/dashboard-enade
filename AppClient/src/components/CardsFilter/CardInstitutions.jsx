@@ -58,6 +58,7 @@ class CardInstitutions extends Component {
       for (var institution in this.state.institutions) {
         if (institution.toUpperCase().includes(name.toUpperCase())) {
           let keyExists = false
+          // eslint-disable-next-line
           institutionsSearched.map((k, v) => {
             if (Object.keys(k).indexOf(institution) >= 0) {
               keyExists = true

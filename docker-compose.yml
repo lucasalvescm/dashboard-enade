@@ -1,8 +1,8 @@
 version: '3'
 services:
-  back:
-    container_name: back
-    hostname: back
+  web:
+    container_name: web
+    hostname: web
     build: AppServer
     volumes:
       - ./AppServer:/home/node/app
@@ -13,9 +13,9 @@ services:
       - PORT=3000
       - NODE_ENV=production
 
-  front:
-    container_name: front
-    hostname: front
+  worker:
+    container_name: worker
+    hostname: worker
     build: AppClient
     volumes:
       - ./AppClient:/usr/src/app

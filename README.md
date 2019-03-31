@@ -83,5 +83,9 @@ The project contemplates the requirements of the scope of the test, however, som
 * API Cache (use nginx)
 * Application authentication to configure what each user profile would have access to on the system. Example: The admin user would have access to all the options and the user (institution) would only have access to data visualization and reports.
 
+## Credits
+
+The frontend base template was used in the https://github.com/creativetimofficial/light-bootstrap-dashboard-react repository
+
 ## Authors
 * **Lucas Alves** - [Linkedin](https://www.linkedin.com/in/lucas-alves-s/)

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Grid, Row, Col, Table } from 'react-bootstrap';
 
-import Button from "components/CustomButton/CustomButton.jsx";
+import Button from "../../components/CustomButton/CustomButton.jsx";
 
-import Card from 'components/Card/Card.jsx';
-import { thCoursers, api_urls } from 'variables/Variables.jsx';
-import CoursersDialog from 'components/CoursersDialog/CoursersDialog.jsx';
+import Card from '../../components/Card/Card.jsx';
+import { thCoursers, api_urls } from '../../variables/Variables.jsx';
+import CoursersDialog from '../../components/CoursersDialog/CoursersDialog.jsx';
 
 
 import swal from 'sweetalert';

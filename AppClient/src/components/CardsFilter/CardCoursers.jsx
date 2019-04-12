@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Table } from 'react-bootstrap';
-import { Card } from "components/Card/Card.jsx";
-import { api_urls } from "variables/Variables.jsx"
+import { Card } from "../../components/Card/Card.jsx";
+import { api_urls } from "../../variables/Variables.jsx"
 
 class CardCoursers extends Component {
   constructor(props, context) {

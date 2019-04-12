@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { api_urls } from "variables/Variables.jsx"
+import { api_urls } from "../../variables/Variables.jsx"
 import { Col } from "react-bootstrap";
-import { StatsCard } from "components/StatsCard/StatsCard.jsx";
+import { StatsCard } from "../../components/StatsCard/StatsCard.jsx";
 
 class CardsHeaders extends Component {
   constructor(props, context) {

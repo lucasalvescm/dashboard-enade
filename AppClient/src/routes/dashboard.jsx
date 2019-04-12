@@ -1,6 +1,6 @@
-import Institutions from 'views/Institutions/Institutions';
-import Coursers from 'views/Coursers/Coursers';
-import Dashboard from 'views/Dashboard/Dashboard';
+import Institutions from '../views/Institutions/Institutions';
+import Coursers from '../views/Coursers/Coursers';
+import Dashboard from '../views/Dashboard/Dashboard';
 
 const dashboardRoutes = [
   {

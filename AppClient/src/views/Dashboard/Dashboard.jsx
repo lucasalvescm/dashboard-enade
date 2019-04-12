@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Grid, Row, Col } from "react-bootstrap";
-import CardInstitutions from "components/CardsFilter/CardInstitutions"
-import CardCoursers from "components/CardsFilter/CardCoursers"
-import CardsHeader from "components/CardsFilter/CardsHeader"
+import CardInstitutions from "../../components/CardsFilter/CardInstitutions"
+import CardCoursers from "../../components/CardsFilter/CardCoursers"
+import CardsHeader from "../../components/CardsFilter/CardsHeader"
 
 
 class Dashboard extends Component {

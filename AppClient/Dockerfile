@@ -10,7 +10,7 @@ RUN npm install
 RUN npm install -g http-server
 
 
-ADD . /usr/src/app
+COPY . .
 RUN npm rebuild node-sass --force
 RUN npm run build
 RUN rm -rf ./build

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Modal, Table } from 'react-bootstrap';
 import NotificationSystem from "react-notification-system";
-import { style, api_urls } from "variables/Variables.jsx";
-import Button from "components/CustomButton/CustomButton.jsx";
+import { style, api_urls } from "../../variables/Variables.jsx";
+import Button from "../../components/CustomButton/CustomButton.jsx";
 
 import swal from 'sweetalert';
 
